@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'VS2017-Win2016'
+
+
+steps:
+- task: PowerShell@2
+  inputs:
+    targetType: filePath
+    filePath: './.Script/Test-DynamicTask-SyncToGithub-GitOperation.ps1'
+    arguments: '-ExcutePSFile "Test-DynamicTask-Main-Continuous.ps1"'
+  env:
+
+    GithubPAT: '05d57011aa542996c653114afe602edeb7088b23'
+
+    GithubUserEmail: '503272740@qq.com'
+
+    GithubUserName: 'ChloeQian123'
+
+    GithubRepoName: 'OfficeDocs-Support-Demo'
+
+    AzureUserEmail: 'v-jichlo@microsoft.com'
+
+    AzureUserName: 'Chloe Chloe'
+
+

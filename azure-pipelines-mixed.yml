@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'VS2017-Win2016'
+
+
+steps:
+- task: PowerShell@2
+  inputs:
+    targetType: filePath
+    filePath: './.Script/Test-DynamicTask-1-GitOperation.ps1'
+    arguments: '-ExcutePSFile "Test-DynamicTask-Main-Continuous.ps1"'
+  env:
+
+    PAT: 'f5yvvtkgvu5r6d5feyqpmojwxdgkvjyese33vq2xspb6fve3kgqa'
+
+    SyncToOrganizationName: 'contentidea-dev'
+
+    SyncToProjectName: 'MixedModeContent'
+      
+    SyncToReposName: 'SupportContent-Public-Test'
+
+    AzureUserEmail: 'v-jichlo@microsoft.com'
+
+    AzureUserName: 'Chloe Chloe'
+
+    ExcutePSFile: 'Test-DynamicTask-Main-Continuous.ps1'
